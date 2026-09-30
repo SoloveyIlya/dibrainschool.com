@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="dibrain school">
+  <title>dibrain school</title>
+  <style>
+    .bg { fill: #0046d6; }
+    .bracket { fill: none; stroke: #fff; }
+    .play { fill: #fff; stroke: #fff; }
+    @media (prefers-color-scheme: dark) {
+      .bg { fill: #dae5ff; }
+      .bracket { stroke: #0046d6; }
+      .play { fill: #0046d6; stroke: #0046d6; }
+    }
+  </style>
+  <rect class="bg" width="32" height="32" rx="8"/>
+  <g class="bracket" stroke-width="2.55" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M10.35 8.15H8.15c-.72 0-1.3.58-1.3 1.3v13.1c0 .72.58 1.3 1.3 1.3h2.2"/>
+    <path d="M21.65 8.15h2.2c.72 0 1.3.58 1.3 1.3v13.1c0 .72-.58 1.3-1.3 1.3h-2.2"/>
+  </g>
+  <path
+    class="play"
+    stroke-width="1.7"
+    stroke-linejoin="round"
+    stroke-linecap="round"
+    d="M13.15 11.05v9.9L21.55 16Z"
+  />
+</svg>
