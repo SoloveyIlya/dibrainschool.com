@@ -1,0 +1,159 @@
+.success {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  padding: 1.25rem 0 12vh;
+}
+
+.success .intro-title {
+  color: var(--ink);
+}
+
+.success .intro-title .accent {
+  align-self: flex-start;
+  width: fit-content;
+  max-width: 100%;
+  margin-top: 0.22em;
+  padding: 0.07em 0.16em 0.03em;
+  background: var(--ink);
+  color: #ffffff;
+  line-height: 1.02;
+}
+
+.timer {
+  display: flex;
+  align-items: center;
+  gap: 0.95rem;
+  margin-top: 1.75rem;
+}
+
+.timer[hidden] {
+  display: none !important;
+}
+
+.timer__dial {
+  position: relative;
+  width: 4.6rem;
+  height: 4.6rem;
+}
+
+.timer__ring {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.timer__track,
+.timer__value {
+  fill: none;
+  stroke-width: 3;
+}
+
+.timer__track {
+  stroke: rgba(0, 70, 214, 0.18);
+}
+
+.timer__value {
+  stroke: var(--ink);
+  stroke-linecap: round;
+  stroke-dasharray: 113.1;
+  stroke-dashoffset: 0;
+  animation: timer-drain 5s linear forwards;
+}
+
+.timer__num {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: #111111;
+  font-size: 1.65rem;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.timer__hint {
+  color: var(--muted);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.tg {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  min-height: 3.9rem;
+  margin-top: 1.7rem;
+  padding: 0.38rem 0.38rem 0.38rem 1.35rem;
+  border-radius: 999px;
+  background: #2aabee;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background 0.2s ease, translate 0.25s ease;
+}
+
+.tg:hover,
+.tg:focus-visible {
+  background: #1e96d1;
+  translate: 0 -2px;
+}
+
+.tg:hover .tg__icon,
+.tg:focus-visible .tg__icon {
+  translate: 3px 0;
+}
+
+.tg:focus-visible {
+  outline: 2px solid #2aabee;
+  outline-offset: 4px;
+}
+
+.tg:active {
+  translate: 0 0;
+}
+
+.tg__icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 3.15rem;
+  height: 3.15rem;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #2aabee;
+  transition: translate 0.25s ease;
+}
+
+.tg__icon svg {
+  display: block;
+  width: 1.7rem;
+  height: 1.25rem;
+}
+
+@keyframes timer-drain {
+  to {
+    stroke-dashoffset: 113.1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .timer__value,
+  .tg,
+  .tg__icon {
+    animation: none !important;
+    transition: none !important;
+  }
+}

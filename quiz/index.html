@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Анкета предзаписи — [dibrain] school</title>
+    <meta name="theme-color" content="#dae5ff" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <script>
+      if (/\/quiz$/.test(location.pathname)) {
+        location.replace(location.pathname + "/" + location.search + location.hash);
+      }
+    </script>
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="../favicon-32x32.png" type="image/png" sizes="32x32" />
+    <link rel="icon" href="../favicon-16x16.png" type="image/png" sizes="16x16" />
+    <link rel="shortcut icon" href="../favicon.ico" />
+    <link rel="apple-touch-icon" href="../apple-touch-icon.png" />
+    <link rel="stylesheet" href="quiz.css?v=7" />
+  </head>
+  <body>
+    <div class="shell">
+      <header class="top">
+        <a class="brand" href="../">
+          <span>[dibrain]</span>
+          <span>school</span>
+        </a>
+        <p class="count" id="count" hidden>1 / 10</p>
+      </header>
+
+      <div class="progress" id="progress" hidden>
+        <div
+          class="progress__track"
+          id="progressbar"
+          role="progressbar"
+          aria-valuemin="1"
+          aria-valuemax="10"
+          aria-valuenow="1"
+          aria-label="Вопрос 1 из 10"
+        >
+          <span class="progress__fill" id="progress-fill"></span>
+        </div>
+      </div>
+
+      <form id="quiz" action="../quiz.php" method="post" novalidate>
+        <div class="hp" aria-hidden="true">
+          <label>Компания <input type="text" name="company" tabindex="-1" autocomplete="off" /></label>
+        </div>
+
+        <section class="step" data-step="intro">
+          <h1 class="intro-title" tabindex="-1">
+            <span>анкета предзаписи</span>
+            <span>в dibrain school</span>
+          </h1>
+          <div class="lead">
+            <p>
+              Если ты здесь, скорее всего, тебе интересно разобраться, как можно использовать AI для
+              создания контента и превратить этот навык в реальный результат или дополнительный доход.
+            </p>
+            <p>
+              Мы подготовили небольшую анкету, чтобы лучше познакомиться с тобой и понять, чем именно
+              можем быть полезны. Заполнение займёт примерно <span class="nowrap">3–5 минут</span>.
+            </p>
+            <p>
+              Очень важно ответить на все вопросы честно. Нам важно увидеть твою реальную ситуацию,
+              опыт и цели. После заполнения мы внимательно посмотрим твои ответы.
+            </p>
+            <p>
+              Если поймём, что действительно можем помочь тебе с развитием в AI-контенте и привести к
+              нужному результату, наша команда свяжется с тобой в ближайшее время и расскажет, что
+              можно делать дальше. До встречи 💙
+            </p>
+          </div>
+        </section>
+
+        <section class="step" data-step="contacts" data-kind="contacts" hidden>
+          <h1 class="q" id="q-contacts" tabindex="-1">Как с тобой связаться?</h1>
+          <div class="fields">
+            <div class="stack">
+              <label class="stack__label" for="name">ФИО</label>
+              <input
+                class="field"
+                id="name"
+                name="name"
+                type="text"
+                data-kind="name"
+                autocomplete="name"
+                enterkeyhint="next"
+                maxlength="120"
+                placeholder="Имя и фамилия"
+              />
+              <p class="error" role="alert" hidden></p>
+            </div>
+            <div class="stack">
+              <label class="stack__label" for="phone">Номер телефона</label>
+              <input
+                class="field"
+                id="phone"
+                name="phone"
+                type="tel"
+                data-kind="phone"
+                autocomplete="tel"
+                inputmode="tel"
+                enterkeyhint="next"
+                maxlength="32"
+                placeholder="+7 900 000-00-00"
+              />
+              <p class="error" role="alert" hidden></p>
+            </div>
+            <div class="stack">
+              <label class="stack__label" for="telegram">Ник в телеграм</label>
+              <input
+                class="field"
+                id="telegram"
+                name="telegram"
+                type="text"
+                data-kind="telegram"
+                autocomplete="username"
+                enterkeyhint="next"
+                maxlength="64"
+                placeholder="@username"
+                spellcheck="false"
+              />
+              <p class="error" role="alert" hidden></p>
+            </div>
+          </div>
+        </section>
+
+        <section class="step" data-step="learn" data-kind="choice" hidden>
+          <h1 class="q" id="q-learn" tabindex="-1">
+            Хочешь научиться создавать контент с помощью AI и зарабатывать на этом?
+          </h1>
+          <div class="choices" role="radiogroup" aria-labelledby="q-learn">
+            <label class="choice">
+              <input type="radio" name="learn" value="Да" />
+              <span>Да</span>
+            </label>
+            <label class="choice">
+              <input type="radio" name="learn" value="Нет" />
+              <span>Нет</span>
+            </label>
+          </div>
+          <p class="error" role="alert" hidden></p>
+        </section>
+
+        <section class="step" data-step="city" data-kind="city" hidden>
+          <h1 class="q" id="q-city" tabindex="-1">Из какого ты города?</h1>
+          <input
+            class="field"
+            id="city"
+            name="city"
+            type="text"
+            autocomplete="address-level2"
+            enterkeyhint="next"
+            maxlength="80"
+            placeholder="Город"
+            aria-labelledby="q-city"
+          />
+          <p class="error" role="alert" hidden></p>
+        </section>
+
+        <section class="step" data-step="age" data-kind="choice" hidden>
+          <h1 class="q" id="q-age" tabindex="-1">Сколько тебе полных лет?</h1>
+          <div class="choices" role="radiogroup" aria-labelledby="q-age">
+            <label class="choice"><input type="radio" name="age" value="До 18" /><span>До 18</span></label>
+            <label class="choice"><input type="radio" name="age" value="18–25" /><span>18–25</span></label>
+            <label class="choice"><input type="radio" name="age" value="25–35" /><span>25–35</span></label>
+            <label class="choice"><input type="radio" name="age" value="35–45" /><span>35–45</span></label>
+            <label class="choice"><input type="radio" name="age" value="45+" /><span>45+</span></label>
+          </div>
+          <p class="error" role="alert" hidden></p>
+        </section>
+
+        <section class="step" data-step="job" data-kind="choice" hidden>
+          <h1 class="q" id="q-job" tabindex="-1">Чем ты сейчас занимаешься?</h1>
+          <div class="choices" role="radiogroup" aria-labelledby="q-job">
+            <label class="choice"><input type="radio" name="job" value="Работаю в найме" /><span>Работаю в найме</span></label>
+            <label class="choice"><input type="radio" name="job" value="Развиваю свой бизнес / проект" /><span>Развиваю свой бизнес / проект</span></label>
+            <label class="choice"><input type="radio" name="job" value="Работаю на себя / фриланс" /><span>Работаю на себя / фриланс</span></label>
+            <label class="choice"><input type="radio" name="job" value="Учусь" /><span>Учусь</span></label>
+            <label class="choice"><input type="radio" name="job" value="Нахожусь в декрете" /><span>Нахожусь в декрете</span></label>
+            <label class="choice"><input type="radio" name="job" value="Сейчас не работаю" /><span>Сейчас не работаю</span></label>
+            <label class="choice"><input type="radio" name="job" value="__other__" /><span>Другое</span></label>
+          </div>
+          <div class="other" hidden>
+            <label class="other__label" for="job-other">Свой вариант</label>
+            <input class="field" id="job-other" name="job_other" type="text" maxlength="160" enterkeyhint="next" placeholder="Напиши свой вариант" />
+          </div>
+          <p class="error" role="alert" hidden></p>
+        </section>
+
+        <section class="step" data-step="experience" data-kind="choice" hidden>
+          <h1 class="q" id="q-experience" tabindex="-1">Какой у тебя сейчас опыт в создании контента с помощью AI?</h1>
+          <div class="choices" role="radiogroup" aria-labelledby="q-experience">
+            <label class="choice"><input type="radio" name="experience" value="Вообще нет опыта, хочу начать с нуля" /><span>Вообще нет опыта, хочу начать с нуля</span></label>
+            <label class="choice"><input type="radio" name="experience" value="Пробовал(а) ChatGPT / нейросети, но пока без системы" /><span>Пробовал(а) ChatGPT / нейросети, но пока без системы</span></label>
+            <label class="choice"><input type="radio" name="experience" value="Уже создаю AI-контент для себя или своих проектов" /><span>Уже создаю AI-контент для себя или своих проектов</span></label>
+            <label class="choice"><input type="radio" name="experience" value="Создаю контент для клиентов" /><span>Создаю контент для клиентов</span></label>
+            <label class="choice"><input type="radio" name="experience" value="Уже зарабатываю с помощью AI-контента" /><span>Уже зарабатываю с помощью AI-контента</span></label>
+            <label class="choice"><input type="radio" name="experience" value="__other__" /><span>Другое</span></label>
+          </div>
+          <div class="other" hidden>
+            <label class="other__label" for="experience-other">Свой вариант</label>
+            <input class="field" id="experience-other" name="experience_other" type="text" maxlength="160" enterkeyhint="next" placeholder="Напиши свой вариант" />
+          </div>
+          <p class="error" role="alert" hidden></p>
+        </section>
+
+        <section class="step" data-step="income" data-kind="choice" hidden>
+          <h1 class="q" id="q-income" tabindex="-1">Сколько ты сейчас зарабатываешь в месяц?</h1>
+          <div class="choices" role="radiogroup" aria-labelledby="q-income">
+            <label class="choice"><input type="radio" name="income" value="Пока не зарабатываю" /><span>Пока не зарабатываю</span></label>
+            <label class="choice"><input type="radio" name="income" value="До 250$" /><span>До 250$</span></label>
+            <label class="choice"><input type="radio" name="income" value="250$–500$" /><span>250$–500$</span></label>
+            <label class="choice"><input type="radio" name="income" value="500$–1 000$" /><span>500$–1 000$</span></label>
+            <label class="choice"><input type="radio" name="income" value="1 000$–3 000$" /><span>1 000$–3 000$</span></label>
+            <label class="choice"><input type="radio" name="income" value="3 000$+" /><span>3 000$+</span></label>
+          </div>
+          <p class="error" role="alert" hidden></p>
+        </section>
+
+        <section class="step" data-step="target" data-kind="choice" hidden>
+          <h1 class="q" id="q-target" tabindex="-1">
+            На какой доход в месяц ты хотел(а) бы выйти благодаря навыкам работы с AI-контентом?
+          </h1>
+          <div class="choices" role="radiogroup" aria-labelledby="q-target">
+            <label class="choice"><input type="radio" name="target" value="250$–750$" /><span>250$–750$</span></label>
+            <label class="choice"><input type="radio" name="target" value="750$–1 500$" /><span>750$–1 500$</span></label>
+            <label class="choice"><input type="radio" name="target" value="1 500$–3 000$" /><span>1 500$–3 000$</span></label>
+            <label class="choice"><input type="radio" name="target" value="3 000$+" /><span>3 000$+</span></label>
+            <label class="choice"><input type="radio" name="target" value="Для начала хочу просто выйти на первые деньги" /><span>Для начала хочу просто выйти на первые деньги</span></label>
+          </div>
+          <p class="error" role="alert" hidden></p>
+        </section>
+
+        <section class="step" data-step="purpose" data-kind="choice" hidden>
+          <h1 class="q" id="q-purpose" tabindex="-1">Для чего тебе в первую очередь нужен навык создания AI-контента?</h1>
+          <div class="choices" role="radiogroup" aria-labelledby="q-purpose">
+            <label class="choice"><input type="radio" name="purpose" value="Хочу начать зарабатывать на создании контента для клиентов" /><span>Хочу начать зарабатывать на создании контента для клиентов</span></label>
+            <label class="choice"><input type="radio" name="purpose" value="Хочу развивать свои соцсети / личный бренд" /><span>Хочу развивать свои соцсети / личный бренд</span></label>
+            <label class="choice"><input type="radio" name="purpose" value="Хочу продвигать свой бизнес или продукт" /><span>Хочу продвигать свой бизнес или продукт</span></label>
+            <label class="choice"><input type="radio" name="purpose" value="Хочу быстрее и проще создавать контент" /><span>Хочу быстрее и проще создавать контент</span></label>
+            <label class="choice"><input type="radio" name="purpose" value="Хочу освоить новую востребованную профессию" /><span>Хочу освоить новую востребованную профессию</span></label>
+            <label class="choice"><input type="radio" name="purpose" value="Пока изучаю возможности AI" /><span>Пока изучаю возможности AI</span></label>
+            <label class="choice"><input type="radio" name="purpose" value="__other__" /><span>Другое</span></label>
+          </div>
+          <div class="other" hidden>
+            <label class="other__label" for="purpose-other">Свой вариант</label>
+            <input class="field" id="purpose-other" name="purpose_other" type="text" maxlength="160" enterkeyhint="next" placeholder="Напиши свой вариант" />
+          </div>
+          <p class="error" role="alert" hidden></p>
+        </section>
+
+        <section class="step" data-step="result" data-kind="result" hidden>
+          <h1 class="q" id="q-result" tabindex="-1">Расскажи, какой результат от обучения был бы для тебя идеальным?</h1>
+          <textarea
+            class="field"
+            id="result"
+            name="result"
+            rows="5"
+            maxlength="2000"
+            placeholder="Опиши результат своими словами"
+            aria-labelledby="q-result"
+          ></textarea>
+          <p class="error" role="alert" hidden></p>
+        </section>
+
+        <p class="error form-error" id="form-error" role="alert" hidden></p>
+
+        <div class="actions">
+          <button class="back" id="back" type="button" hidden>назад</button>
+          <button class="cta" id="next" type="submit">
+            <span class="cta__label">начать</span>
+            <span class="cta__go" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M5 12h12.5M13.5 6.5 19.5 12l-6 5.5"
+                  stroke="currentColor"
+                  stroke-width="2.4"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </span>
+          </button>
+        </div>
+      </form>
+
+      <section class="thanks" id="thanks" hidden>
+        <h1 class="intro-title" tabindex="-1">
+          <span>спасибо,</span>
+          <span>анкета у нас</span>
+        </h1>
+        <div class="lead">
+          <p>
+            Мы внимательно посмотрим ответы. Если поймём, что действительно можем помочь тебе с
+            развитием в AI-контенте, наша команда свяжется с тобой в ближайшее время.
+          </p>
+        </div>
+        <div class="actions thanks__actions">
+          <a class="cta" href="../">
+            <span class="cta__label">на главную</span>
+            <span class="cta__go" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M5 12h12.5M13.5 6.5 19.5 12l-6 5.5"
+                  stroke="currentColor"
+                  stroke-width="2.4"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </span>
+          </a>
+        </div>
+        <button class="again" id="again" type="button">заполнить ещё раз</button>
+      </section>
+    </div>
+    <noscript>
+      <p class="noscript">Чтобы заполнить анкету по шагам, включи JavaScript в браузере.</p>
+    </noscript>
+    <script src="quiz.js?v=6"></script>
+  </body>
+</html>
