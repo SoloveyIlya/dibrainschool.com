@@ -4,4 +4,5 @@ DirectoryIndex index.html index.php
   RewriteEngine On
   RewriteRule ^quiz$ quiz/ [R=301,L]
   RewriteRule ^success$ success/ [R=301,L]
+  RewriteRule ^offer$ offer/ [R=301,L]
 </IfModule>

@@ -198,6 +198,7 @@
     nextLabel.textContent = "отправляем";
     formError.hidden = true;
 
+    let sent = false;
     try {
       const endpoint = new URL("../quiz.php", window.location.href);
       const response = await fetch(endpoint.href, {
@@ -215,11 +216,13 @@
           data && data.error ? data.error : "Не получилось отправить. Попробуй ещё раз.";
         return;
       }
+      sent = true;
       finish();
     } catch (error) {
       formError.hidden = false;
       formError.textContent = "Нет соединения. Проверь интернет и попробуй ещё раз.";
     } finally {
+      if (sent) return;
       sending = false;
       next.disabled = false;
       back.disabled = false;
@@ -228,16 +231,54 @@
     }
   };
 
+  const leadValue = (data, key) => {
+    if (!data || typeof data[key] !== "string") return "";
+    if (data[key] === "__other__") {
+      const other = data[key + "_other"];
+      return typeof other === "string" ? other.trim() : "";
+    }
+    return data[key].trim();
+  };
+
+  const telegramMessage = (data) => {
+    const rows = [
+      ["Имя", leadValue(data, "name")],
+      ["Телефон", leadValue(data, "phone")],
+      ["Telegram", leadValue(data, "telegram")],
+      ["Город", leadValue(data, "city")],
+      ["Возраст", leadValue(data, "age")],
+      ["Чем занимаюсь", leadValue(data, "job")],
+      ["Опыт в AI", leadValue(data, "experience")],
+      ["Доход сейчас", leadValue(data, "income")],
+      ["Хочу выйти на", leadValue(data, "target")],
+      ["Зачем навык", leadValue(data, "purpose")],
+      ["Идеальный результат", leadValue(data, "result")],
+    ].filter((row) => row[1]);
+
+    const lines = ["Привет! Я заполнил(а) анкету предзаписи в dibrain school."];
+    if (!rows.length) {
+      lines.push("", "Хочу попасть на разбор.");
+      return lines.join("\n");
+    }
+    lines.push("");
+    rows.forEach((row) => {
+      lines.push(row[0] + ": " + row[1]);
+    });
+    return lines.join("\n");
+  };
+
   const finish = () => {
+    const lead = payload();
     try {
-      sessionStorage.setItem("dibrain-quiz-lead", JSON.stringify(payload()));
+      sessionStorage.setItem("dibrain-quiz-lead", JSON.stringify(lead));
       sessionStorage.removeItem(storageKey);
       sessionStorage.removeItem(doneKey);
       sessionStorage.removeItem("dibrain-tg-opened");
     } catch (error) {
       /* ignore */
     }
-    window.location.href = new URL("../success/", window.location.href).href;
+    window.location.href =
+      "https://t.me/m/pZpgojsRNTg0?text=" + encodeURIComponent(telegramMessage(lead));
   };
 
   const restore = () => {

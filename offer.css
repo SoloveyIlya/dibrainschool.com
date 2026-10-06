@@ -1,0 +1,240 @@
+@font-face {
+  font-family: "Resist Sans Display";
+  src: url("fonts/ResistSansDisplay-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Resist Sans Display";
+  src: url("fonts/ResistSansDisplay-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+.site-foot {
+  width: 100%;
+  margin-top: 0.85rem;
+  text-align: center;
+}
+
+.site-foot a {
+  color: inherit;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-underline-offset: 0.22em;
+  opacity: 0.72;
+}
+
+.site-foot a:hover,
+.site-foot a:focus-visible {
+  opacity: 1;
+}
+
+.site-foot a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+  border-radius: 0.3rem;
+}
+
+.shell .site-foot {
+  margin-top: 1.35rem;
+  text-align: left;
+}
+
+.offer-dialog {
+  width: min(40rem, calc(100vw - 1.4rem));
+  max-height: min(88dvh, 760px);
+  margin: auto;
+  padding: 0;
+  border: none;
+  border-radius: 1.2rem;
+  background: #ffffff;
+  color: #161616;
+  box-shadow: 0 24px 64px rgba(0, 35, 110, 0.28);
+}
+
+.offer-dialog::backdrop {
+  background: rgba(0, 28, 90, 0.48);
+}
+
+.offer-dialog__sheet {
+  position: relative;
+  max-height: min(88dvh, 760px);
+  overflow: auto;
+  padding: 1.15rem 1.2rem 1.45rem;
+}
+
+.offer-dialog__close {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: block;
+  margin: 0 0 0.85rem auto;
+  padding: 0.55rem 0.85rem;
+  border: none;
+  border-radius: 999px;
+  background: #0046d6;
+  color: #ffffff;
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.offer-dialog__close:hover,
+.offer-dialog__close:focus-visible {
+  background: #0039b8;
+}
+
+.offer-dialog__close:focus-visible {
+  outline: 2px solid #0046d6;
+  outline-offset: 3px;
+}
+
+.offer-dialog__status {
+  margin: 2.2rem 0 1rem;
+  color: #5c6570;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.offer-doc h1,
+.offer-doc h2,
+.offer-doc p,
+.offer-doc li {
+  overflow-wrap: break-word;
+}
+
+.offer-doc h1 {
+  margin: 0;
+  color: #0046d6;
+  font-size: clamp(1.7rem, 6vw, 2.4rem);
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.offer-doc h2 {
+  margin: 1.35rem 0 0.45rem;
+  color: #111111;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.offer-doc p,
+.offer-doc li {
+  color: #243041;
+  font-size: 0.98rem;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  line-height: 1.45;
+}
+
+.offer-doc p {
+  margin: 0.55rem 0 0;
+}
+
+.offer-doc ol,
+.offer-doc ul {
+  margin: 0.45rem 0 0;
+  padding-left: 1.15rem;
+}
+
+.offer-doc li + li {
+  margin-top: 0.28rem;
+}
+
+.offer-doc a {
+  color: #0046d6;
+}
+
+.offer-doc__kicker,
+.offer-doc__lead {
+  color: #5c6570;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.offer-doc__kicker {
+  margin: 0 0 0.55rem;
+  text-transform: uppercase;
+}
+
+.offer-doc__lead {
+  margin-top: 0.7rem;
+}
+
+.offer-doc .nowrap {
+  white-space: nowrap;
+}
+
+.offer-page {
+  min-height: 100dvh;
+  margin: 0;
+  background: #dae5ff;
+  color: #0046d6;
+  font-family: "Resist Sans Display", "Arial Narrow", Arial, sans-serif;
+  font-weight: 500;
+  -webkit-font-smoothing: antialiased;
+}
+
+.offer-page__wrap {
+  width: min(100% - 2.3rem, 44rem);
+  margin: 0 auto;
+  padding: max(0.95rem, env(safe-area-inset-top)) 0 max(1.6rem, env(safe-area-inset-bottom));
+}
+
+.offer-page__top {
+  margin-bottom: 1.2rem;
+}
+
+.offer-page__brand {
+  display: flex;
+  align-items: baseline;
+  gap: 0.32em;
+  color: #0046d6;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.offer-page .offer-doc {
+  padding: 1.25rem 1.15rem 1.5rem;
+  border-radius: 1.2rem;
+  background: #ffffff;
+}
+
+@media (min-width: 900px) {
+  .offer-page__brand {
+    font-size: 1.55rem;
+  }
+
+  .offer-page .offer-doc,
+  .offer-dialog__sheet {
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .offer-dialog {
+    transition: none;
+  }
+}

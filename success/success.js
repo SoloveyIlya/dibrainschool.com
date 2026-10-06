@@ -1,5 +1,5 @@
 (() => {
-  const manager = "MelehinCreo";
+  const manager = "m/pZpgojsRNTg0";
   const openedKey = "dibrain-tg-opened";
   const link = document.getElementById("telegram");
 

@@ -96,9 +96,8 @@ function handle_request() {
     respond(false, $answers['error'], 400);
   }
 
-  $saved = save_application($answers);
-  $google = forward_google(google_fields($answers));
-  if (!$saved && !$google) {
+  save_application($answers);
+  if (!forward_google(google_fields($answers))) {
     respond(false, 'Не получилось отправить. Попробуй ещё раз через минуту.', 502);
   }
 
